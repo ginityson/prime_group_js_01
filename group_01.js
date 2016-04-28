@@ -1,39 +1,58 @@
-var atticus = ["Atticus", "2405", "47000", 3];
-var jem = ["Jem", "62347", "63500", 4];
-var boo = ["Boo", "11435", "54000", 3];
-var scout = ["Scout", "6243", "74750", 5];var employees = [atticus, jem, boo, scout];loop(employees);function loop(array) {
-for (i = 0; i <4; i++) {
-  console.log(final(array[i]));
+function Employee(employeeName, employeeNum, employeeAnnual, employeeRating) {
+  this.name = employeeName,
+  this.num = employeeNum,
+  this.annual = employeeAnnual,
+  this.rating = employeeRating;
 }
-}function sti (employee) {
-var bonus = 0;if (employee[3] <= 2) {
+
+var atticusEmployee = new Employee('Atticus', '2405', '47000', 3);
+var jemEmployee = new Employee('Jem', '62347', '63500', 4);
+var booEmployee = new Employee('Boo', '11435', '54000', 3);
+var scoutEmployee = new Employee('Scout', '6243', '74750', 5);
+
+var employees = [atticusEmployee, jemEmployee, booEmployee, scoutEmployee];
+
+loop(employees);
+
+function loop(array) {
+for (var i = 0; i <4; i++) {
+console.log(final(array[i]));
+}
+}
+
+function sti (employee) {
+var bonus = 0;
+
+if (employee.rating <= 2) {
     bonus = 0;
 }
-if (employee[3] == 3) {
+if (employee.rating == 3) {
    bonus = bonus + 0.04;
-} else if (employee[3] == 4) {
+} else if (employee.rating == 4) {
    bonus = bonus + 0.06;
-} else if (employee[3] == 5) {
+} else if (employee.rating == 5) {
    bonus = bonus + 0.10;
 }
-if(employee[1].length == 4) {
+if(employee.num.length == 4) {
 bonus = bonus + 0.05;
 }
-if(employee[2] > 65000) {
+if(employee.annual > 65000) {
 bonus = bonus - 0.01;
 }
 if(bonus > 0.13) {
    bonus = 0.13;
 }
-if (employee[3] <= 2) {
+if (employee.rating <= 2) {
 bonus = 0;
 }
 return bonus;
-}function final (employee) {
+}
+
+function final (employee) {
 var array = [];
-array.push(employee[0]);
+array.push(employee.name);
 array.push(sti(employee));
-array.push(parseInt(employee[2])+parseInt(employee[2]*sti(employee)));
-array.push(Math.round(sti(employee)*parseInt(employee[2])));
+array.push(parseInt(employee.annual)+parseInt(employee.annual*sti(employee)));
+array.push(Math.round(sti(employee)*parseInt(employee.annual)));
 return array;
 }
